@@ -1,6 +1,6 @@
 #! /bin/sh
 
-# Installed by Chef => graylog2::web-interface.rb
+# Installed by Chef => graylog2::default.rb
 
 ### BEGIN INIT INFO
 # Provides:          graylog2
@@ -8,15 +8,15 @@
 # Required-Stop:     $all
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: starts the graylog2 web
+# Short-Description: starts the graylog2 server
 # Description:       starts the graylog2 java server using the graylog2 control script
 ### END INIT INFO
 #
 #  Once installed, use "sudo update-rc.d graylog2 defaults" to enable!
 
-BINDIR=<%= node[:graylog2][:web_home] %>/bin
-NAME=graylog2-web
-DESC=graylog2-web
+BINDIR=<%= node[:graylog2][:server_home] %>/bin
+NAME=graylog2
+DESC=graylog2
 
 test -x /usr/bin/java || exit 0
 
@@ -26,19 +26,19 @@ case "$1" in
 start)
 echo -n "Starting $DESC: "
 cd $BINDIR
-./graylog2-web-interface
+./graylog2ctl start
 echo "...started."
 ;;
 stop)
 echo -n "Stopping $DESC: "
 cd $BINDIR
-./graylog2-web-interface stop
+./graylog2ctl stop
 echo "...stopped."
 ;;
 restart)
 echo -n "Restarting $DESC: "
 cd $BINDIR
-./graylog2-web-interface restart
+./graylog2ctl restart
 echo "...restarted."
 ;;
 *)

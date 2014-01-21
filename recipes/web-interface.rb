@@ -35,10 +35,10 @@ template "/etc/init.d/graylog2-web-interface" do
   owner "root"
   group "root"
   mode  "0755"
-  notifies :restart, "service[graylog2-web-interface]"
+  notifies :restart, "service[graylog2-web]"
 end
 
-service "graylog2-web-interface" do
+service "graylog2-web" do
   supports :restart => true, :status => true, :reload => true
   action [ :enable, :start]
 end
