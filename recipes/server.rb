@@ -8,7 +8,12 @@
 #
 include_recipe "ark"
 include_recipe "java"
-include_recipe "mongodb"
+
+# mongo single instance
+include_recipe "mongodb::10gen_repo"
+include_recipe "mongodb::default"
+
+# elasticsearch, clustername set in override attributes
 include_recipe "elasticsearch"
 
 group node[:graylog2][:server_group] do
