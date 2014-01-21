@@ -9,6 +9,10 @@
 include_recipe "ark"
 include_recipe "java"
 
+group node[:graylog2][:web_group] do
+  action :create
+end
+
 user node[:graylog2][:web_user] do
   group node[:graylog2][:web_group]
   supports :manage_home => true
@@ -23,10 +27,10 @@ ark 'graylog2-web-interface' do
   group node[:graylog2][:web_group]
 end
 
-template File.join(node[:graylog2][:web_home], "graylog2-web-interface.conf") do
+template File.join(node[:graylog2][:web_home], "conf/graylog2-web-interface.conf") do
   source "graylog2-web-interface.conf.erb"
   owner node[:graylog2][:web_user]
-  group node[:graylog2][:web_user]
+  group node[:graylog2][:web_group]
   mode 00644
 end
 
@@ -35,10 +39,10 @@ template "/etc/init.d/graylog2-web-interface" do
   owner "root"
   group "root"
   mode  "0755"
-  notifies :restart, "service[graylog2-web]"
+  notifies :restart, "service[graylog2-web-interface]"
 end
 
-service "graylog2-web" do
+service "graylog2-web-interface" do
   supports :restart => true, :status => true, :reload => true
   action [ :enable, :start]
 end

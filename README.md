@@ -4,6 +4,8 @@ Cookbook for java/play based graylog2 server and web interface.
 
 # Requirements
 
+Tested the cookbook with virtualbox 4.3 and vagrant 1.4.3
+
 # Usage
 
 Run default recipe to install server with web interface.

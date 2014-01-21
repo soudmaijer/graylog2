@@ -2,8 +2,8 @@ default[:graylog2][:server_home] = '/opt/graylog2-server'
 default[:graylog2][:server_user] = 'graylog2'
 default[:graylog2][:server_group] = 'graylog2'
 default[:graylog2][:server_package] = 'https://github.com/Graylog2/graylog2-server/releases/download/0.20.0-rc.1/graylog2-server-0.20.0-rc.1.tgz'
-default[:graylog2][:server_password_secret] = "" # You MUST set a secret to secure/pepper the stored user passwords here. Use at least 64 characters. Generate one by using for example: pwgen -s 96
-default[:graylog2][:server_root_password_sha2] = "" # Create one by using for example: echo -n yourpassword | shasum -a 256
+default[:graylog2][:server_password_secret] = "eepahkohd9ieliecaejienahkamohpucaengoisaipeileeghohquohsaijoorohpagheiboodahkeelahraxahmaejoujahifeb7imeyoingaeyiequucuugholaayaicheedaemunguvahgieghihahnailakahmeebeighahtieshahquiegoogaecailgah0aijahvaivaefeekopheilaeyothixepoxaiwieyohyeghiefiungomiesookahtaitootaitaipielahaighoomereehahl9upiixohxoorusiengoquooviuthekephidalaesoopeephiuquahhaingooroofenaediexoakohtheiceiseecahvaeeshob7poonooquohmaileniejateivaipahsaijahveleingooquushooxiiphoohufi" # You MUST set a secret to secure/pepper the stored user passwords here. Use at least 64 characters. Generate one by using for example: pwgen -s 96
+default[:graylog2][:server_root_password_sha2] = "dce1515a0a1a0e504bcc8a610bea25dde30f2d8d9c87372a1a720b71064361e4" # Create one by using for example: echo -n yourpassword | shasum -a 256
 default[:graylog2][:server_rest_listen_uri] = "http://127.0.0.1:12900/"
 default[:graylog2][:server_shards] = 1
 default[:graylog2][:server_replicas] = 0
@@ -18,6 +18,7 @@ default[:graylog2][:web_package] = 'https://github.com/Graylog2/graylog2-web-int
 
 override[:java][:install_flavor] = "openjdk"
 override[:java][:jdk_version] = "7"
+override[:java][:openjdk_packages] = ["openjdk-7-jdk", "openjdk-7-jre-headless"]
 
 override[:elasticsearch][:cluster][:name] = "graylog2"
 override[:elasticsearch][:bootstrap][:mlockall] = "graylog2"

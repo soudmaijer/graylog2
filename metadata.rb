@@ -15,6 +15,6 @@ recipe "graylog2::web-interace", "Installs and configures a graylog2 web interfa
 end
 
 depends "ark", "= 0.4.0"
-depends "java", "= 1.12.0"
+depends "java", "= 1.14.0"
 depends "elasticsearch", "= 0.3.7"
 depends "mongodb", "= 0.13.7"
