@@ -55,18 +55,6 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
-        "mysql" => {
-            "server_root_password" => "iloverandompasswordsbutthiswilldo",
-            "server_repl_password" => "iloverandompasswordsbutthiswilldo",
-            "server_debian_password" => "iloverandompasswordsbutthiswilldo"
-        },
-        "bamboo" => {
-            'bamboo_home' => '/opt/data/bamboo/',
-            'external_data' => false,
-            'backup' => {
-                'enabled' => true
-            }
-        }
     }
     chef.run_list = [
         "recipe[graylog2::server]",
