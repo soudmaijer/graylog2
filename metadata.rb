@@ -9,6 +9,7 @@ version          '0.1.0'
 recipe "graylog2::default", "Installs and configures a graylog2 server"
 recipe "graylog2::server", "Installs and configures a graylog2 server"
 recipe "graylog2::web-interace", "Installs and configures a graylog2 web interface"
+recipe "graylog2::nginx", "Installs and configures nginx as reverse proxy for the web interface"
 
 %w{ ubuntu debian }.each do |os|
   supports os
@@ -18,3 +19,4 @@ depends "ark", "= 0.4.0"
 depends "java", "= 1.14.0"
 depends "elasticsearch", "= 0.3.7"
 depends "mongodb", "= 0.13.7"
+depends "nginx", "= 2.2.0"

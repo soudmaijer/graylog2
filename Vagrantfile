@@ -58,7 +58,8 @@ Vagrant.configure("2") do |config|
     }
     chef.run_list = [
         "recipe[graylog2::server]",
-        "recipe[graylog2::web-interface]"
+        "recipe[graylog2::web-interface]",
+        "recipe[graylog2::nginx]"
     ]
   end
 end
