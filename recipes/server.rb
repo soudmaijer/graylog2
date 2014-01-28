@@ -37,18 +37,19 @@ end
 # Create graylog2.conf
 template "/etc/graylog2.conf" do
   mode 0644
-  notifies :restart, "service[graylog2]"
+  notifies :restart, "service[graylog2-server]"
 end
 
 # Create init.d script
-template "/etc/init.d/graylog2" do
-  source "graylog2.init.erb"
+template "/etc/init.d/graylog2-server" do
+  source "graylog2-server.init.erb"
   mode 0755
+  notifies :restart, "service[graylog2-server]", :delayed
 end
 
 # Service resource
-service "graylog2" do
-  supports :restart => true
-  action [:enable, :start]
+service "graylog2-server" do
+  supports :restart => true, :status => true
+  action :enable
 end
 

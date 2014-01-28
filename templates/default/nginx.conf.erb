@@ -3,7 +3,7 @@ server {
 
   location / {
 
-    proxy_pass              <%= node[:graylog2][:server_rest_listen_uri] %>;
+    proxy_pass              <%= node[:graylog2][:web_url] %>;
     proxy_set_header        Host $host;
     proxy_set_header        X-Real-IP $remote_addr;
     proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;

@@ -18,5 +18,5 @@ end
 depends "ark", "= 0.4.0"
 depends "java", "= 1.14.0"
 depends "elasticsearch", "= 0.3.7"
-depends "mongodb", "= 0.13.7"
+depends "mongodb", "= 0.14.3"
 depends "nginx", "= 2.2.0"

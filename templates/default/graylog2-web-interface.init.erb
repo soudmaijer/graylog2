@@ -3,7 +3,7 @@
 # Installed by Chef => graylog2::web-interface.rb
 
 ### BEGIN INIT INFO
-# Provides:          graylog2
+# Provides:          graylog2-web-interface
 # Required-Start:    $all
 # Required-Stop:     $all
 # Default-Start:     2 3 4 5
@@ -11,41 +11,78 @@
 # Short-Description: starts the graylog2 web
 # Description:       starts the graylog2 java server using the graylog2 control script
 ### END INIT INFO
-#
-#  Once installed, use "sudo update-rc.d graylog2 defaults" to enable!
 
-BINDIR=<%= node[:graylog2][:web_home] %>/bin
-NAME=graylog2-web
-DESC=graylog2-web
+APP=graylog2-web-interface
+APP_PATH=<%= node[:graylog2][:web_home] %>
+NOHUP=`which nohup`
+GRAYLOG2_PID=$APP_PATH/RUNNING_PID
 
 test -x /usr/bin/java || exit 0
 
 set -e
 
+start() {
+  echo "Starting graylog2-web-interface ..."
+  cd $APP_PATH/bin
+  $NOHUP ./graylog2-web-interface -mem <%= node[:graylog2][:web_mem] %> &
+}
+
+stop() {
+  PID=$(get_pid)
+  echo "Stopping graylog2-web-interface ($PID) ..."
+  if kill $PID; then
+    rm ${GRAYLOG2_PID}
+  fi
+}
+
+restart() {
+  echo "Restarting graylog2-web-interface ..."
+  stop
+  start
+}
+
+status() {
+  PID=$(get_pid)
+  if [ ! -z $PID ]; then
+    if pid_running $PID; then
+      echo "graylog2-web-interface running as pid $PID"
+      return 0
+    else
+      echo "Stale pid file with $PID - removing..."
+      rm ${GRAYLOG2_PID}
+    fi
+  fi
+
+  echo "graylog2-web-interface not running"
+}
+
+get_pid() {
+  cat ${GRAYLOG2_PID} 2> /dev/null
+}
+
+pid_running() {
+  kill -0 $1 2> /dev/null
+}
+
+
 case "$1" in
-start)
-echo -n "Starting $DESC: "
-cd $BINDIR
-./graylog2-web-interface
-echo "...started."
-;;
-stop)
-echo -n "Stopping $DESC: "
-cd $BINDIR
-./graylog2-web-interface stop
-echo "...stopped."
-;;
-restart)
-echo -n "Restarting $DESC: "
-cd $BINDIR
-./graylog2-web-interface restart
-echo "...restarted."
-;;
-*)
-N=/etc/init.d/$NAME
-echo "Usage: $N {start|stop|restart}" >&2
-exit 1
-;;
+  start)
+    start
+  ;;
+  stop)
+    stop
+  ;;
+  status)
+    status
+  ;;
+  restart)
+    restart
+  ;;
+  *)
+    N=/etc/init.d/$APP
+    echo "Usage: $N {start|stop|restart|status}" >&2
+    exit 1
+  ;;
 esac
 
 exit 0
