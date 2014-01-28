@@ -25,5 +25,6 @@ override[:java][:openjdk_packages] = ["openjdk-7-jdk", "openjdk-7-jre-headless"]
 override[:elasticsearch][:cluster][:name] = "graylog2"
 override[:elasticsearch][:bootstrap][:mlockall] = "graylog2"
 override[:elasticsearch][:allocated_memory] = "512m"
+override[:elasticsearch][:plugins] = {"mobz/elasticsearch-head" => ""}
 
 override[:nginx][:default_site_enabled] = false

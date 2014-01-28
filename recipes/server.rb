@@ -15,6 +15,7 @@ include_recipe "mongodb::default"
 
 # elasticsearch, clustername set in override attributes
 include_recipe "elasticsearch"
+include_recipe "elasticsearch::plugins"
 
 group node[:graylog2][:server_group] do
   action :create
