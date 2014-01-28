@@ -1,6 +1,6 @@
 # graylog2 cookbook
 
-Cookbook for java/play based graylog2 server and web interface.
+Cookbook for java/play based graylog2 v0.20 and up, both server and web interface.
 
 # Requirements
 
