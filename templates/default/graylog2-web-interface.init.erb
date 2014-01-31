@@ -28,21 +28,22 @@ start() {
 }
 
 stop() {
-  PID=$(get_pid)
-  echo "Stopping graylog2-web-interface ($PID) ..."
-  if kill $PID; then
-    rm ${GRAYLOG2_PID}
+  if [ -f $GRAYLOG2_PID ];
+  then
+    PID=`cat ${GRAYLOG2_PID}`
+    echo "Stopping graylog2-web-interface ($PID) ..."
+    kill $PID
   fi
 }
 
 restart() {
-  echo "Restarting graylog2-web-interface ..."
-  stop
-  start
+    stop
+    sleep 2
+    start
 }
 
 status() {
-  PID=$(get_pid)
+  PID=`cat ${GRAYLOG2_PID}`
   if [ ! -z $PID ]; then
     if pid_running $PID; then
       echo "graylog2-web-interface running as pid $PID"
@@ -54,10 +55,6 @@ status() {
   fi
 
   echo "graylog2-web-interface not running"
-}
-
-get_pid() {
-  cat ${GRAYLOG2_PID} 2> /dev/null
 }
 
 pid_running() {
