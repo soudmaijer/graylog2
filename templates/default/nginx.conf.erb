@@ -1,5 +1,5 @@
 server {
-  listen 80;
+  listen <%= node[:graylog2][:nginx_port] %>;
 
   location / {
 

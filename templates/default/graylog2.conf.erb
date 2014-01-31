@@ -111,9 +111,9 @@ processor_wait_strategy = blocking
 ring_size = 1024
 
 # MongoDB Configuration
-mongodb_useauth = false
-#mongodb_user = grayloguser
-#mongodb_password = 123
+mongodb_useauth = <%= node[:graylog2][:server_mongodb_auth] %>
+mongodb_user = <%= node[:graylog2][:server_mongodb_username] %>
+mongodb_password = <%= node[:graylog2][:server_mongodb_password] %>
 mongodb_host = 127.0.0.1
 #mongodb_replica_set = localhost:27017,localhost:27018,localhost:27019
 mongodb_database = graylog2
