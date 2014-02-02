@@ -1,7 +1,7 @@
 server {
   listen <%= node[:graylog2][:nginx_port] %>;
 
-  location / {
+  location <%= node[:graylog2][:nginx_location] %> {
 
     proxy_pass              <%= node[:graylog2][:web_url] %>;
     proxy_set_header        Host $host;

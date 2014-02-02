@@ -32,6 +32,15 @@ template File.join(node[:graylog2][:web_home], "conf/graylog2-web-interface.conf
   owner node[:graylog2][:web_user]
   group node[:graylog2][:web_group]
   mode 00644
+  notifies :restart, "service[graylog2-web-interface]", :delayed
+end
+
+template File.join(node[:graylog2][:web_home], "conf/application.conf") do
+  source "application.conf.erb"
+  owner node[:graylog2][:web_user]
+  group node[:graylog2][:web_group]
+  mode 00644
+  notifies :restart, "service[graylog2-web-interface]", :delayed
 end
 
 template "/etc/init.d/graylog2-web-interface" do
