@@ -31,6 +31,7 @@ end
 ark 'graylog2-server' do
   url node[:graylog2][:server_package]
   home_dir node[:graylog2][:server_home]
+  version node[:graylog2][:server_version]
   owner node[:graylog2][:server_user]
   group node[:graylog2][:server_group]
 end

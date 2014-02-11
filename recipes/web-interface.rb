@@ -23,6 +23,7 @@ end
 ark 'graylog2-web-interface' do
   url node[:graylog2][:web_package]
   home_dir node[:graylog2][:web_home]
+  version node[:graylog2][:web_version]
   owner node[:graylog2][:web_user]
   group node[:graylog2][:web_group]
 end
