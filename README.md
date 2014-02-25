@@ -14,7 +14,7 @@ Run default recipe to install server with web interface.
 
 Graylog2 server
 
-* default[:graylog2][:server_version] = '0.20.0-rc.2'
+* default[:graylog2][:server_version] = '0.20.0'
 * default[:graylog2][:server_home] = '/opt/graylog2-server'
 * default[:graylog2][:server_user] = 'graylog2'
 * default[:graylog2][:server_group] = 'graylog2'
@@ -32,7 +32,7 @@ Graylog2 server
 
 Graylog2 web interface
 
-* default[:graylog2][:server_version] = '0.20.0-rc.2'
+* default[:graylog2][:server_version] = '0.20.0'
 * default[:graylog2][:server_home] = '/opt/graylog2-server'
 * default[:graylog2][:server_user] = 'graylog2'
 * default[:graylog2][:server_group] = 'graylog2'

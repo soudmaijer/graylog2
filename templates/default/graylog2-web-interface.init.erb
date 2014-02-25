@@ -15,7 +15,7 @@
 APP=<%= node[:graylog2][:web_service_name] %>
 APP_PATH=<%= node[:graylog2][:web_home] %>
 NOHUP=`which nohup`
-GRAYLOG2_PID=$APP_PATH/RUNNING_PID
+GRAYLOG2_PID=/var/run/<%= node[:graylog2][:web_service_name] %>
 
 test -x /usr/bin/java || exit 0
 
@@ -24,7 +24,7 @@ set -e
 start() {
   echo "Starting $APP ..."
   cd $APP_PATH/bin
-  $NOHUP ./$APP -mem <%= node[:graylog2][:web_mem] %> &
+  $NOHUP ./$APP -mem <%= node[:graylog2][:web_mem] %> -Dpidfile.path=$GRAYLOG2_PID &
 }
 
 stop() {

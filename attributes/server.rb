@@ -4,7 +4,7 @@ override[:elasticsearch][:bootstrap][:mlockall] = "graylog2"
 override[:elasticsearch][:allocated_memory] = "512m"
 override[:elasticsearch][:plugins] = {"mobz/elasticsearch-head" => ""}
 
-default[:graylog2][:server_version] = '0.20.0'
+default[:graylog2][:server_version] = '0.20.1'
 default[:graylog2][:server_home] = '/opt/graylog2-server'
 default[:graylog2][:server_user] = 'graylog2'
 default[:graylog2][:server_group] = 'graylog2'

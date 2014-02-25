@@ -1,4 +1,4 @@
-default[:graylog2][:web_version] = '0.20.0'
+default[:graylog2][:web_version] = '0.20.1'
 default[:graylog2][:web_home] = '/opt/graylog2-web-interface'
 default[:graylog2][:web_user] = 'graylog2-web'
 default[:graylog2][:web_service_name] = 'graylog2-web-interface'
