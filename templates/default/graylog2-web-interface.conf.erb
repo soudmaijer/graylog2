@@ -16,4 +16,5 @@ application.secret="<%= node[:graylog2][:server_password_secret] %>"
 # If you leave this out, Graylog2 will pick your system default as the timezone. Usually you will want to configure it explicitly.
 timezone="<%= node[:graylog2][:web_tz] %>"
 
+# Web interface context path, default is / but can be changed
 application.context="<%= node[:graylog2][:web_context] %>"
