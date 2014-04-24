@@ -26,4 +26,4 @@ include_recipe "mongodb::default"
 include_recipe "elasticsearch"
 include_recipe "elasticsearch::plugins"
 
-include_recipe "graylog2::server"
+include_recipe "graylog2::server-only"
