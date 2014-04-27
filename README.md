@@ -42,6 +42,13 @@ Graylog2 server
 * default[:graylog2][:server_mongodb_auth] = false
 * default[:graylog2][:server_mongodb_username] = "graylog2"
 * default[:graylog2][:server_mongodb_password] = "graylog2"
+* default[:graylog2][:server_mongodb_host] = '127.0.0.1'
+* default[:graylog2][:server_mongodb_database] = 'graylog2'
+* default[:graylog2][:server_mongodb_port] = '27017'
+
+Commented out by default:
+
+* default[:graylog2][:server_mongodb_replica_set] = 'localhost:27017,localhost:27018,localhost:27019'
 
 Graylog2 web interface
 
