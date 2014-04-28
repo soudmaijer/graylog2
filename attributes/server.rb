@@ -22,6 +22,4 @@ default[:graylog2][:server_mongodb_password] = "graylog2"
 default[:graylog2][:server_mongodb_host] = '127.0.0.1'
 default[:graylog2][:server_mongodb_database] = 'graylog2'
 default[:graylog2][:server_mongodb_port] = '27017'
-
-# Uncomment to use replica_set
-# default[:graylog2][:server_mongodb_replica_set] = 'localhost:27017,localhost:27018,localhost:27019'
+default[:graylog2][:server_mongodb_replica_set] = '' # E.g. localhost:27017,localhost:27018,localhost:27019

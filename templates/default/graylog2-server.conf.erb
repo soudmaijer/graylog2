@@ -115,7 +115,7 @@ mongodb_useauth = <%= node[:graylog2][:server_mongodb_auth] %>
 mongodb_user = <%= node[:graylog2][:server_mongodb_username] %>
 mongodb_password = <%= node[:graylog2][:server_mongodb_password] %>
 mongodb_host = <%= node[:graylog2][:server_mongodb_host] %>
-<% if node[:graylog2][:server_mongodb_replica_set] %>
+<% if node[:graylog2][:server_mongodb_replica_set] && !node[:graylog2][:server_mongodb_replica_set].empty? %>
 mongodb_replica_set = <%= node[:graylog2][:server_mongodb_replica_set] %>
 <% end %>
 mongodb_database = <%= node[:graylog2][:server_mongodb_database] %>
