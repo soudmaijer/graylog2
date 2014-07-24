@@ -24,7 +24,7 @@ set -e
 start() {
   echo "Starting $APP ..."
   cd $APP_PATH/bin
-  $NOHUP ./$APP -mem <%= node[:graylog2][:web_mem] %> -Dpidfile.path=$GRAYLOG2_PID &
+  su - <%= node[:graylog2][:web_user] %> -c "$NOHUP ./$APP -mem <%= node[:graylog2][:web_mem] %> -Dpidfile.path=$GRAYLOG2_PID &"
 }
 
 stop() {
