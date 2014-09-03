@@ -17,8 +17,8 @@ recipe 'graylog2::nginx',               'Installs and configures nginx as revers
   supports os
 end
 
-depends 'ark',                          '= 0.8.0'
-depends 'java',                         '= 1.22.0'
-depends 'elasticsearch',                '= 0.3.8'
-depends 'mongodb',                      '= 0.14.8'
-depends 'nginx',                        '= 2.2.0'
+depends 'ark',                          '~> 0.8.0'
+depends 'java',                         '~> 1.22.0'
+depends 'elasticsearch',                '~> 0.3.8'
+depends 'mongodb',                      '~> 0.16.0'
+depends 'nginx',                        '~> 2.2.0'
