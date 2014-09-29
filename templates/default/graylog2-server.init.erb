@@ -23,25 +23,21 @@ set -e
 case "$1" in
   start)
     echo -n "Starting $DESC: "
-    cd $BINDIR
-    su - <%= node[:graylog2][:server_user] %> -c "./graylog2ctl start"
+    su - <%= node[:graylog2][:server_user] %> -c "cd $BINDIR ; ./graylog2ctl start"
     echo "...started."
   ;;
   stop)
     echo -n "Stopping $DESC: "
-    cd $BINDIR
-    su - <%= node[:graylog2][:server_user] %> -c "./graylog2ctl stop"
+    su - <%= node[:graylog2][:server_user] %> -c "cd $BINDIR ; ./graylog2ctl stop"
     echo "...stopped."
   ;;
   status)
     echo -n "Restarting $DESC: "
-    cd $BINDIR
-    su - <%= node[:graylog2][:server_user] %> -c "./graylog2ctl status"
+    su - <%= node[:graylog2][:server_user] %> -c "cd $BINDIR ; ./graylog2ctl status"
   ;;
   restart)
     echo -n "Restarting $DESC: "
-    cd $BINDIR
-    su - <%= node[:graylog2][:server_user] %> -c "./graylog2ctl restart"
+    su - <%= node[:graylog2][:server_user] %> -c "cd $BINDIR ; ./graylog2ctl restart"
     echo "...restarted."
   ;;
   *)
